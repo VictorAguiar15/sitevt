@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIUS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=MuseoModerno&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #00BFFF, #ffffff);
+        }
+
+        body h1 {
+            font-family: 'MuseoModerno', sans-serif;
+            font-size: 3rem;
+            margin-top: 10px;
+            color: #000;
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: black;
+        }
+
+        body h2 {
+            font-family: 'MuseoModerno', sans-serif;
+            font-size: 8rem;
+            color: #000;
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: white;
+        }
+
+        header {
+            background: linear-gradient(to right, #f0f0f0, #7F00FF);
+            padding: 10px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .logo img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50px;
+        }
+
+        nav a {
+            color: #000;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .pesquisar {
+            border: 1px solid black;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+        }
+
+        .pesquisar input {
+            border: none;
+            outline: none;
+            background: transparent;
+        }
+
+        .barra-img {
+            display: flex;
+            justify-content: space-between;
+            padding: 40px;
+            align-items: center;
+        }
+
+        .b-img {
+            max-width: 45%;
+        }
+
+        .em-cima p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .em-cima {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .em-cima img {
+            width: 400px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .de-baixo {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .de-baixo img {
+            margin-top: 10px;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            margin-left: 200px;
+        }
+
+        .logo2 img {
+            max-width: 800px;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .right-content {
+                margin-top: 30px;
+            }
+        }
+
+        h1 {
+            font-size: 3em;
+        }
+
+        .ranking-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .top-row {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+
+        .card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .card img {
+            display: flex;
+            width: 100%;
+            height: auto;
+        }
+
+        .info {
+            padding: 2px;
+            background-color: rgba(255, 255, 255, 0.7);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        h3 {
+            font-size: 3em;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+
+
+        audio {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+        }
+
+        button {
+            background: #444;
+            border: none;
+            color: #fff;
+            padding: 10px 15px;
+            margin-right: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        button {
+            background: #555;
+        }
+
+        input[type="range"] {
+            flex: 1;
+            cursor: pointer;
+        }
+
+
+
+        .lugar {
+            position: absolute;
+            top: -40px;
+            left: -20px;
+            font-size: 2.5em;
+            color: white;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .card-2,
+        .card-3 {
+            width: 310px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card-2 .info {
+            background: linear-gradient(to right, yellow, #b2ff59, #ff1744);
+            align-items: end;
+        }
+
+        .card-3 .info {
+            background-color: #515052;
+        }
+
+        footer {
+            text-align: center;
+        }
+
+        footer h1 {
+            font-family: 'Arial Black', Arial, sans-serif;
+            font-weight: 900;
+            font-size: 28px;
+            color: white;
+            margin-bottom: 15px;
+            /* texto com contorno preto */
+            text-shadow: -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000;
+        }
+
+        .distribuicao {
+            font-family: monospace;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .eye-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid white;
+        }
+
+        .eye-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="img/logo.png" style="border: 2px solid black;">
+            <h1 style="margin-left: 6px; margin-top: 10px;">MIUS</h1>
+        </div>
+        <nav>
+            <a href="#">Artistas</a>
+            <a href="#">Músicas</a>
+            <a href="#">Lançamentos</a>
+        </nav>
+        <div class="pesquisar">
+            <input type="text" placeholder="______________________">
+            🔍
+        </div>
+    </header>
+
+    <div class="barra-img">
+        <div class="b-img">
+            <h2>MIUS</h2>
+            <p>Encontre um mundo repleto de músicas!</p>
+            <div class="em-cima">
+                <img src="img/img sertaneja 1 p.jpg">
+                <img src="img/rock img 1.jpg">
+                <div class="de-baixo">
+                    <img src="img/dj 1 p.jpg">
+                </div>
+            </div>
+        </div>
+        <div class="logo2">
+            <img src="img/logo.png">
+        </div>
+    </div>
+    <div class="pagina 2" style="background: linear-gradient(to top,white, yellow)">
+        <h3 class="titulo2" style="text-align: center; padding: 30px; font-family: 'MuseoModerno', sans-serif; ">As Mais
+            Tocadas</h3>
+
+            <div class="ranking-container">
+                <div class="top-row">
+                  <div class="card card-3">
+                    <img src="img/2.jpg" />
+                    <div class="info">
+                      <div class="player">
+                        <audio class="audio" src="mus/Dance All Night (1).mp3"></audio>
+                        <div class="controls">
+                          <button class="play-pause">▶️</button>
+                          <input type="range" class="progress" value="0" min="0" max="100" />
+                        </div>
+                      </div>
+                      <p style="text-align: center;">Flow 299km</p>
+                      <p style="text-align: center;">40 Cent</p>
+                    </div>
+                  </div>
+              
+                  <div class="card card-2">
+                    <img src="img/bandaflow.jpg" />
+                    <div class="info">
+                      <div class="player">
+                        <audio class="audio" src="mus/One World, One Love.mp3"></audio>
+                        <div class="controls">
+                          <button class="play-pause">▶️</button>
+                          <input type="range" class="progress" value="0" min="0" max="100" />
+                        </div>
+                      </div>
+                      <p style="text-align: center;">Mind Break</p>
+                      <p style="text-align: center;">4:20</p>
+                    </div>
+                  </div>
+              
+                  <div class="card card-3" style="background: transparent;">
+                    <img src="img/3rock.jpg" />
+                    <div class="info">
+                      <div class="player">
+                        <audio class="audio" src="mus/Grit in the Spotlight.mp3"></audio>
+                        <div class="controls">
+                          <button class="play-pause">▶️</button>
+                          <input type="range" class="progress" value="0" min="0" max="100" />
+                        </div>
+                      </div>
+                      <p style="text-align: center;">Hell Dive</p>
+                      <p style="text-align: center;">Six&7</p>
+                    </div>
+                  </div>
+              
+                  <div class="card card-2">
+                    <img src="img/Leonardo_Phoenix_10_Musicians_playing_reggae_on_an_outdoor_sta_1.jpg" />
+                    <div class="info">
+                      <div class="player">
+                        <audio class="audio" src="mus/Rustic Serenade.mp3"></audio>
+                        <div class="controls">
+                          <button class="play-pause">▶️</button>
+                          <input type="range" class="progress" value="0" min="0" max="100" />
+                        </div>
+                      </div>
+                      <p style="text-align: center;">L0ve</p>
+                      <p style="text-align: center;">É Ela</p>
+                    </div>
+                  </div>
+              
+                  <div class="card card-3">
+                    <img src="img/Leonardo_Phoenix_10_A_DJ_playing_in_a_futuristic_booth_lit_by_1.jpg" />
+                    <div class="info">
+                      <div class="player">
+                        <audio class="audio" src="mus/Dancing in the Sunlight (1).mp3"></audio>
+                        <div class="controls">
+                          <button class="play-pause">▶️</button>
+                          <input type="range" class="progress" value="0" min="0" max="100" />
+                        </div>
+                      </div>
+                      <p style="text-align: center;">DJ Paqueta</p>
+                      <p style="text-align: center;">Eu jogo</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+
+    <footer style="background-color: #0004ff; text-align: center;">
+        <h1>Mius LTDA.</h1>
+        <div class="final" style="font-family: Arial, Helvetica, sans-serif;">
+            <a href="#">Contato</a>
+            <a href="#">Sobre</a>
+            <a href="#">Direção</a>
+            <a href="#">Parcerias</a>
+        </div>
+        <div class="distribuicao">Distribuição: VT/entertainment</div>
+        <div class="logo" style="align-items: center;">
+            <img src="img/logo.png" style="align-items: center; margin-left: 920px;">
+        </div>
+    </footer>
+
+
+
+    <script>
+        // Seleciona todos os players
+        const players = document.querySelectorAll('.player');
+
+        players.forEach(player => {
+            const audio = player.querySelector('.audio');
+            const playPauseBtn = player.querySelector('.play-pause');
+            const progress = player.querySelector('.progress');
+
+            playPauseBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play();
+                    playPauseBtn.textContent = '⏸️';
+                } else {
+                    audio.pause();
+                    playPauseBtn.textContent = '▶️';
+                }
+            });
+
+            audio.addEventListener('timeupdate', () => {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                progress.value = progressPercent || 0;
+            });
+
+            progress.addEventListener('input', () => {
+                const seekTime = (progress.value / 100) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+
+            // Se o áudio terminar, voltar para o play
+            audio.addEventListener('ended', () => {
+                playPauseBtn.textContent = '▶️';
+                progress.value = 0;
+            });
+        });
+    </script>
+
+</body>
+
+</html>
